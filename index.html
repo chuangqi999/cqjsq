@@ -1,51 +1,229 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>创奇机场 - 套餐价格</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>创奇最新地址发布页</title>
   <style>
-    body { font-family: "Helvetica Neue", sans-serif; background-color: #f5f7fa; color: #333; margin: 0; padding: 0; }
-    header { background-color: #4f46e5; color: #fff; padding: 1rem; text-align: center; }
-    .container { max-width: 900px; margin: 2rem auto; padding: 1rem; background: #fff; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-    table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
-    th, td { padding: 0.75rem 1rem; border: 1px solid #ddd; text-align: center; }
-    th { background-color: #4f46e5; color: #fff; }
-    a { color: #4f46e5; text-decoration: none; }
-    footer { margin-top: 2rem; text-align: center; font-size: 0.9rem; color: #666; }
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #00b894, #0984e3);
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .container {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      max-width: 550px;
+      width: 95%;
+      text-align: center;
+    }
+    h1 {
+      color: #0984e3;
+      margin-bottom: 1rem;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+      text-align: left;
+    }
+    li {
+      margin-bottom: 1rem;
+      background: #f9f9f9;
+      padding: 0.7rem;
+      border-radius: 8px;
+      position: relative;
+    }
+    li a {
+      color: #0984e3;
+      font-weight: bold;
+      text-decoration: none;
+      word-break: break-word;
+    }
+    .status {
+      display: inline-block;
+      margin-left: 8px;
+      font-size: 0.9rem;
+    }
+    .status.ok {
+      color: green;
+    }
+    .status.fail {
+      color: red;
+    }
+    .copy-btn {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      background: #00b894;
+      color: #fff;
+      border: none;
+      padding: 4px 8px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      user-select: none;
+      transition: background-color 0.3s;
+    }
+    .copy-btn:hover {
+      background: #019875;
+    }
+    .section-title {
+      font-weight: bold;
+      margin-top: 1.5rem;
+      color: #333;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 0.3rem;
+      margin-bottom: 0.8rem;
+      text-align: left;
+    }
+    .footer {
+      margin-top: 1.5rem;
+      color: #fff;
+      font-size: 0.9rem;
+    }
+    /* 下载列表图标和布局 */
+    .download-list li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      position: relative;
+      padding-right: 70px; /* 给复制按钮留空间 */
+    }
+    .download-list i {
+      font-size: 24px;
+      user-select: none;
+      flex-shrink: 0;
+    }
+    .download-list div {
+      flex-grow: 1;
+    }
+    .download-list button.copy-btn {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      padding: 4px 10px;
+      font-size: 0.85rem;
+    }
   </style>
+
+  <!-- 引入 FontAwesome 图标库 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
-  <header>
-    <h1>创奇机场</h1>
-    <p>官方网址：<a href="https://cqjiasu.top" target="_blank" style="color:#fff;text-decoration:underline;">https://cqjiasu.top</a></p>
-  </header>
 
-  <div class="container">
-    <h2>📦 套餐价格表</h2>
-    <table>
-      <tr><th>套餐名称</th><th>类型</th><th>流量</th><th>价格</th><th>备注</th></tr>
-      <tr><td>一次性 150G 流量</td><td>一次性</td><td>150G</td><td>¥30</td><td>30天有效</td></tr>
-      <tr><td>一次性 500G 流量</td><td>一次性</td><td>500G</td><td>¥70</td><td>30天有效</td></tr>
-      <tr><td>一次性 1000G 流量</td><td>一次性</td><td>1000G</td><td>¥140</td><td>30天有效</td></tr>
-      <tr><td>150G 流量月付</td><td>月付</td><td>150G/月</td><td>¥8</td><td>自动续费</td></tr>
-      <tr><td>300G 流量月付</td><td>月付</td><td>300G/月</td><td>¥12</td><td>自动续费</td></tr>
-      <tr><td>500G 流量月付</td><td>月付</td><td>500G/月</td><td>¥20</td><td>自动续费</td></tr>
-      <tr><td>备用套餐</td><td>年付</td><td>备用套餐</td><td>¥40/年</td><td>备用流量</td></tr>
-    </table>
+<div class="container">
+  <h1>创奇最新地址发布页</h1>
+  <p>请 Ctrl+D 收藏本页，防止迷路</p>
 
-    <h3>📖 使用说明</h3>
-    <ul>
-      <li>一次性套餐：购买后一次性获得对应流量，有效期 30 天</li>
-      <li>月付套餐：每月重置流量，自动续费</li>
-      <li>备用套餐：备用线路使用，推荐用于主套餐用尽后应急</li>
-    </ul>
+  <div class="section-title">最新地址</div>
+  <ul id="link-list">
+    <li>
+      官网1（国外代理）：<br>
+      <a href="https://go.cqjiasu.com" target="_blank" rel="noopener noreferrer">https://go.cqjiasu.com</a>
+      <span class="status" data-url="https://go.cqjiasu.com">检测中...</span>
+      <button class="copy-btn" data-copy="https://go.cqjiasu.com">复制</button>
+    </li>
+    <li>
+      官网2（国内用户）：<br>
+      <a href="https://good.cqjiasu.com" target="_blank" rel="noopener noreferrer">https://good.cqjiasu.com</a>
+      <span class="status" data-url="https://good.cqjiasu.com">检测中...</span>
+      <button class="copy-btn" data-copy="https://good.cqjiasu.com">复制</button>
+    </li>
+    <li>
+      官网3（备用官网）：<br>
+      <a href="https://38.47.108.149" target="_blank" rel="noopener noreferrer">https://38.47.108.149</a>
+      <span class="status" data-url="https://38.47.108.149">检测中...</span>
+      <button class="copy-btn" data-copy="https://38.47.108.149">复制</button>
+    </li>
+  </ul>
 
-    <h3>📬 联系我们</h3>
-    <p>官方网址：<a href="https://cqjiasu.top" target="_blank">https://cqjiasu.top</a></p>
-    <p>Telegram 群组：<a href="https://t.me/catvvpn" target="_blank">@catvvpn</a></p>
+  <div class="section-title">
+    <i class="fas fa-download" style="color:#0984e3; margin-right: 8px;"></i>
+    客户端下载
   </div>
 
-  <footer>© 2025 创奇机场 | MIT License</footer>
+  <ul class="download-list">
+    <li>
+      <i class="fab fa-windows" style="color:#0078D7;"></i>
+      <div>
+        Windows客户端下载：<br>
+        <a href="https://example.com/windows.exe" target="_blank" rel="noopener noreferrer">https://example.com/windows.exe</a>
+      </div>
+      <button class="copy-btn" data-copy="https://example.com/windows.exe">复制</button>
+    </li>
+    <li>
+      <i class="fab fa-android" style="color:#3DDC84;"></i>
+      <div>
+        安卓客户端下载：<br>
+        <a href="https://example.com/android.apk" target="_blank" rel="noopener noreferrer">https://example.com/android.apk</a>
+      </div>
+      <button class="copy-btn" data-copy="https://example.com/android.apk">复制</button>
+    </li>
+    <li>
+      <i class="fab fa-apple" style="color:#999;"></i>
+      <div>
+        Mac客户端下载：<br>
+        <a href="https://example.com/mac.dmg" target="_blank" rel="noopener noreferrer">https://example.com/mac.dmg</a>
+      </div>
+      <button class="copy-btn" data-copy="https://example.com/mac.dmg">复制</button>
+    </li>
+  </ul>
+
+  <div class="section-title">交流与反馈</div>
+  <ul>
+    <li>
+      Telegram 群：<br>
+      <a href="https://t.me/cqjsq" target="_blank" rel="noopener noreferrer">https://t.me/cqjsq</a>
+      <button class="copy-btn" data-copy="https://t.me/cqjsq">复制</button>
+    </li>
+  </ul>
+
+  <div class="footer">© 2013-2025 创奇加速器 版权所有</div>
+</div>
+
+<script>
+  // 复制按钮功能
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const text = btn.dataset.copy;
+      navigator.clipboard.writeText(text).then(() => {
+        const originalText = btn.textContent;
+        btn.textContent = '已复制！';
+        setTimeout(() => btn.textContent = originalText, 1500);
+      }).catch(() => {
+        alert('复制失败，请手动复制');
+      });
+    });
+  });
+
+  // 简单的可用性检测（仅作为参考，跨域限制可能导致不准）
+  async function checkAvailability(url, element) {
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 5000);
+      await fetch(url, { method: 'HEAD', mode: 'no-cors', signal: controller.signal });
+      clearTimeout(timeoutId);
+      element.textContent = '✅ 正常';
+      element.classList.add('ok');
+    } catch (error) {
+      element.textContent = '❌ 无法访问';
+      element.classList.add('fail');
+    }
+  }
+  document.querySelectorAll('.status').forEach(span => {
+    const url = span.dataset.url;
+    checkAvailability(url, span);
+  });
+</script>
+
 </body>
 </html>
