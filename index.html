@@ -48,17 +48,6 @@
       text-decoration: none;
       word-break: break-word;
     }
-    .status {
-      display: inline-block;
-      margin-left: 8px;
-      font-size: 0.9rem;
-    }
-    .status.ok {
-      color: green;
-    }
-    .status.fail {
-      color: red;
-    }
     .copy-btn {
       position: absolute;
       right: 10px;
@@ -90,13 +79,12 @@
       color: #fff;
       font-size: 0.9rem;
     }
-    /* 下载列表图标和布局 */
     .download-list li {
       display: flex;
       align-items: center;
       gap: 8px;
       position: relative;
-      padding-right: 70px; /* 给复制按钮留空间 */
+      padding-right: 70px;
     }
     .download-list i {
       font-size: 24px;
@@ -113,9 +101,20 @@
       padding: 4px 10px;
       font-size: 0.85rem;
     }
+    @media (max-width: 420px) {
+      .copy-btn {
+        position: static;
+        display: block;
+        margin-top: 6px;
+        width: 100%;
+      }
+      .download-list li {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
   </style>
 
-  <!-- 引入 FontAwesome 图标库 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
@@ -129,20 +128,17 @@
     <li>
       官网1（国外代理）：<br>
       <a href="https://go.cqjiasu.com" target="_blank" rel="noopener noreferrer">https://go.cqjiasu.com</a>
-      <span class="status" data-url="https://go.cqjiasu.com">检测中...</span>
       <button class="copy-btn" data-copy="https://go.cqjiasu.com">复制</button>
     </li>
     <li>
       官网2（国内用户）：<br>
       <a href="https://good.cqjiasu.com" target="_blank" rel="noopener noreferrer">https://good.cqjiasu.com</a>
-      <span class="status" data-url="https://good.cqjiasu.com">检测中...</span>
       <button class="copy-btn" data-copy="https://good.cqjiasu.com">复制</button>
     </li>
     <li>
       官网3（备用官网）：<br>
-      <a href="https://13.212.222.89" target="_blank" rel="noopener noreferrer">https://13.212.222.89</a>
-      <span class="status" data-url="https://13.212.222.89">检测中...</span>
-      <button class="copy-btn" data-copy="https://13.212.222.89">复制</button>
+      <a href="https://go.cqjiasu.xyz" target="_blank" rel="noopener noreferrer">https://go.cqjiasu.xyz</a>
+      <button class="copy-btn" data-copy="https://go.cqjiasu.xyz">复制</button>
     </li>
   </ul>
 
@@ -158,7 +154,7 @@
         Windows客户端下载：<br>
         <a href="https://share.feijipan.com/s/LYMUp6k0" target="_blank" rel="noopener noreferrer">https://share.feijipan.com/s/LYMUp6k0</a>
       </div>
-      <button class="copy-btn" data-copy="https://share.feijipan.com/s/GBMUp8XH">复制</button>
+      <button class="copy-btn" data-copy="https://share.feijipan.com/s/LYMUp6k0">复制</button>
     </li>
     <li>
       <i class="fab fa-android" style="color:#3DDC84;"></i>
@@ -166,7 +162,7 @@
         安卓客户端下载：<br>
         <a href="https://share.feijipan.com/s/yGMUpcd9" target="_blank" rel="noopener noreferrer">https://share.feijipan.com/s/yGMUpcd9</a>
       </div>
-      <button class="copy-btn" data-copy="https://example.com/android.apk">复制</button>
+      <button class="copy-btn" data-copy="https://share.feijipan.com/s/yGMUpcd9">复制</button>
     </li>
     <li>
       <i class="fab fa-apple" style="color:#999;"></i>
@@ -191,7 +187,7 @@
 </div>
 
 <script>
-  // 复制按钮功能
+  // 一键复制功能
   document.querySelectorAll('.copy-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const text = btn.dataset.copy;
@@ -204,29 +200,7 @@
       });
     });
   });
-
-  // 简单的可用性检测（仅作为参考，跨域限制可能导致不准）
-  async function checkAvailability(url, element) {
-    try {
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 5000);
-      await fetch(url, { method: 'HEAD', mode: 'no-cors', signal: controller.signal });
-      clearTimeout(timeoutId);
-      element.textContent = '✅ 正常';
-      element.classList.add('ok');
-    } catch (error) {
-      element.textContent = '❌ 无法访问';
-      element.classList.add('fail');
-    }
-  }
-  document.querySelectorAll('.status').forEach(span => {
-    const url = span.dataset.url;
-    checkAvailability(url, span);
-  });
 </script>
 
 </body>
 </html>
-
-
-
