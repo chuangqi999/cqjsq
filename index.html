@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
@@ -41,12 +41,14 @@
       padding: 0.7rem;
       border-radius: 8px;
       position: relative;
+      word-break: break-word;
     }
-    li a {
+    a {
       color: #0984e3;
       font-weight: bold;
       text-decoration: none;
-      word-break: break-word;
+      word-wrap: break-word;
+      overflow-wrap: anywhere;
     }
     .copy-btn {
       position: absolute;
@@ -85,6 +87,7 @@
       gap: 8px;
       position: relative;
       padding-right: 70px;
+      flex-wrap: wrap;
     }
     .download-list i {
       font-size: 24px;
@@ -101,21 +104,38 @@
       padding: 4px 10px;
       font-size: 0.85rem;
     }
+
+    /* ----------- 手机端优化 ----------- */
     @media (max-width: 420px) {
+      body {
+        font-size: 14px;
+      }
+      h1 {
+        font-size: 20px;
+      }
+      .container {
+        padding: 1rem;
+      }
+      .download-list li {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-right: 0;
+      }
       .copy-btn {
         position: static;
         display: block;
         margin-top: 6px;
         width: 100%;
+        box-sizing: border-box;
       }
-      .download-list li {
-        flex-direction: column;
-        align-items: flex-start;
+      .download-list button.copy-btn {
+        margin-top: 8px;
       }
     }
   </style>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <!-- Font Awesome 国内镜像 -->
+  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
 
@@ -170,7 +190,9 @@
         iOS 安装教程：<br>
         1. 登录美区 iOS 商店（ID 可到上方官网使用文档中获取或自行注册）<br>
         2. 登录商店下载安装 AppsConnect<br>
-        <object data="https://v3aw8.sha.cx/29986d5f8ba389159803d5cead750329" width="100%" height="100%"></object><br>
+        <iframe src="https://v3aw8.sha.cx/29986d5f8ba389159803d5cead750329"
+                width="100%" height="185"
+                style="border:none; border-radius:8px; margin-top:6px;"></iframe><br>
         3. 打开 AppsConnect，输入注册码 <b>catv</b><br>
         然后登录账号密码，选择线路连接即可。
       </div>
@@ -227,5 +249,15 @@
   });
 </script>
 
+<script type="text/javascript">
+window.$crisp=[];
+window.CRISP_WEBSITE_ID="4d52874e-43e1-46d9-ac42-3e706bf41849";
+(function(){
+  d=document;s=d.createElement("script");
+  s.src="https://client.crisp.chat/l.js";
+  s.async=1;
+  d.getElementsByTagName("head")[0].appendChild(s);
+})();
+</script>
 </body>
 </html>
