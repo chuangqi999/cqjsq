@@ -40,7 +40,6 @@
       background: #f9f9f9;
       padding: 0.7rem;
       border-radius: 8px;
-      position: relative;
       word-break: break-word;
     }
     a {
@@ -51,16 +50,13 @@
       overflow-wrap: anywhere;
     }
     .copy-btn {
-      position: absolute;
-      right: 10px;
-      top: 10px;
       background: #00b894;
       color: #fff;
       border: none;
-      padding: 4px 8px;
-      border-radius: 5px;
+      padding: 4px 10px;
+      border-radius: 6px;
       cursor: pointer;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       user-select: none;
       transition: background-color 0.3s;
     }
@@ -81,13 +77,14 @@
       color: #fff;
       font-size: 0.9rem;
     }
+
+    /* ===== 下载区块布局优化 ===== */
     .download-list li {
       display: flex;
-      align-items: center;
-      gap: 8px;
-      position: relative;
-      padding-right: 70px;
-      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+      padding: 0.8rem;
     }
     .download-list i {
       font-size: 24px;
@@ -98,14 +95,11 @@
       flex-grow: 1;
     }
     .download-list button.copy-btn {
-      position: absolute;
-      right: 10px;
-      top: 10px;
-      padding: 4px 10px;
-      font-size: 0.85rem;
+      align-self: flex-end;
+      margin-top: 4px;
     }
 
-    /* ----------- 手机端优化 ----------- */
+    /* ===== 手机端优化 ===== */
     @media (max-width: 420px) {
       body {
         font-size: 14px;
@@ -116,19 +110,8 @@
       .container {
         padding: 1rem;
       }
-      .download-list li {
-        flex-direction: column;
-        align-items: flex-start;
-        padding-right: 0;
-      }
       .copy-btn {
-        position: static;
-        display: block;
-        margin-top: 6px;
         width: 100%;
-        box-sizing: border-box;
-      }
-      .download-list button.copy-btn {
         margin-top: 8px;
       }
     }
@@ -147,17 +130,17 @@
   <ul id="link-list">
     <li>
       官网1（国外代理）：<br>
-      <a href="https://go.cqjiasu.com" target="_blank" rel="noopener noreferrer">https://go.cqjiasu.com</a>
+      <a href="https://go.cqjiasu.com" target="_blank" rel="noopener noreferrer">https://go.cqjiasu.com</a><br>
       <button class="copy-btn" data-copy="https://go.cqjiasu.com">复制</button>
     </li>
     <li>
       官网2（国内用户）：<br>
-      <a href="https://good.cqjiasu.com" target="_blank" rel="noopener noreferrer">https://good.cqjiasu.com</a>
+      <a href="https://good.cqjiasu.com" target="_blank" rel="noopener noreferrer">https://good.cqjiasu.com</a><br>
       <button class="copy-btn" data-copy="https://good.cqjiasu.com">复制</button>
     </li>
     <li>
       官网3（备用官网）：<br>
-      <a href="https://go.cqjiasu.xyz" target="_blank" rel="noopener noreferrer">https://go.cqjiasu.xyz</a>
+      <a href="https://go.cqjiasu.xyz" target="_blank" rel="noopener noreferrer">https://go.cqjiasu.xyz</a><br>
       <button class="copy-btn" data-copy="https://go.cqjiasu.xyz">复制</button>
     </li>
   </ul>
@@ -226,7 +209,7 @@
   <ul>
     <li>
       Telegram 群：<br>
-      <a href="https://t.me/cqjsq" target="_blank" rel="noopener noreferrer">https://t.me/cqjsq</a>
+      <a href="https://t.me/cqjsq" target="_blank" rel="noopener noreferrer">https://t.me/cqjsq</a><br>
       <button class="copy-btn" data-copy="https://t.me/cqjsq">复制</button>
     </li>
   </ul>
